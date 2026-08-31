@@ -19,52 +19,19 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = [
-    "pytest>=7.4",
-    "pytest-asyncio>=0.21",
-    "pytest-cov>=4.1",
-    "ruff>=0.1",
-    "mypy>=1.7",
-    "pre-commit>=3.6",
-]
-mcp = [
-    "mcp>=1.0",
-]
-llm = [
-    "openai>=1.10",
-    "anthropic>=0.20",
-]
-langchain = [
-    "langchain>=0.1",
-    "langchain-core>=0.1",
-]
-langgraph = [
-    "langgraph>=0.1",
-    "langchain-core>=0.1",
-]
-autogen = [
-    "pyautogen>=0.2",
-]
-crewai = [
-    "crewai>=0.1",
-]
-http = [
-    "httpx>=0.25",
-]
-all = [
-    "httpx>=0.25",
-    "langchain>=0.1",
-    "langchain-core>=0.1",
-    "langgraph>=0.1",
-    "pyautogen>=0.2",
-    "crewai>=0.1",
-    "mcp>=1.0",
-    "openai>=1.10",
-    "anthropic>=0.20",
-]
+dev = ["pytest>=7.4", "pytest-asyncio>=0.21", "pytest-cov>=4.1", "ruff>=0.1", "mypy>=1.7", "pre-commit>=3.6"]
+mcp = ["mcp>=1.0"]
+llm = ["openai>=1.10", "anthropic>=0.20"]
+langchain = ["langchain>=0.1", "langchain-core>=0.1"]
+langgraph = ["langgraph>=0.1", "langchain-core>=0.1"]
+autogen = ["pyautogen>=0.2"]
+crewai = ["crewai>=0.1"]
+http = ["httpx>=0.25"]
+all = ["httpx>=0.25", "langchain>=0.1", "langchain-core>=0.1", "langgraph>=0.1", "pyautogen>=0.2", "crewai>=0.1", "mcp>=1.0", "openai>=1.10", "anthropic>=0.20"]
 
 [project.entry-points."console_scripts"]
 agentsec = "agentsec.cli:main"
+agentsec-adversary = "agentsec.adversarial_cli:main"
 
 [project.entry-points."agentsec.adapters"]
 custom = "agentsec.adapters.custom:CustomAdapter"
