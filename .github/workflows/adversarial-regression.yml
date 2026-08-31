@@ -1,0 +1,37 @@
+name: AgentSec Adversarial Regression
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  adversarial-regression:
+    name: Adversarial Corpus Regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install AgentSec
+        run: pip install -e ".[dev]"
+
+      - name: Validate committed adversarial corpus
+        run: agentsec-adversary check --corpus tests/corpus/adversarial.json
+
+      - name: Show corpus statistics
+        run: agentsec-adversary stats --corpus tests/corpus/adversarial.json
+
+      - name: Run unit regression tests
+        run: pytest tests/test_adversarial.py -q
